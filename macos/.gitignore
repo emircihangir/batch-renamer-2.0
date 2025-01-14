@@ -2,6 +2,7 @@
 **/Flutter/ephemeral/
 **/Pods/
 Podfile
+Podfile.lock
 
 # Xcode-related
 **/dgph
