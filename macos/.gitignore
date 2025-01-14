@@ -3,6 +3,7 @@
 **/Pods/
 Podfile
 Podfile.lock
+.DS_Store
 
 # Xcode-related
 **/dgph
