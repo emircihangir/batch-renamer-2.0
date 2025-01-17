@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class FilesList extends ChangeNotifier {
-  List<String> _files = [];
+  List<String> _files;
+
+  FilesList({required List<String> initialValue}) : _files = initialValue;
 
   List<String> get files => _files;
 
@@ -16,10 +18,21 @@ class FilesList extends ChangeNotifier {
 }
 
 class RenameFilesPage extends StatelessWidget {
-  const RenameFilesPage({super.key});
+  const RenameFilesPage({super.key, required this.initialValue});
+  final List<String> initialValue;
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(create: (context) => FilesList());
+    return ChangeNotifierProvider(
+      create: (context) => FilesList(initialValue: initialValue),
+      child: _RenameFilePage(),
+    );
+  }
+}
+
+class _RenameFilePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
   }
 }
