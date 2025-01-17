@@ -2,4 +2,4 @@
 
 ## What is it?
 
-Batch Renamer is a MacOS app that allows you to rename files in batches. This new version includes updated UI, better documentation, and more optimized algorithms.
+Batch Renamer is an app that allows you to rename files in batches. This new version includes updated UI, better documentation, and more optimized algorithms.
