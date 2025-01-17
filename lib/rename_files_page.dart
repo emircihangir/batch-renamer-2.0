@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 class FilesList extends ChangeNotifier {
   List<String> _files;
 
-  FilesList({required List<String> initialValue}) : _files = initialValue;
+  FilesList({required List<String> initialValue}) : _files = List.from(initialValue);
 
   List<String> get files => _files;
 
