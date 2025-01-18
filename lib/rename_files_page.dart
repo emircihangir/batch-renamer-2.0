@@ -1,25 +1,27 @@
 // ignore_for_file: use_key_in_widget_constructors
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class FilesList extends ChangeNotifier {
-  List<String> _files;
+  final List<File> _files;
 
-  FilesList({required List<String> initialValue}) : _files = List.from(initialValue);
+  FilesList({required List<File> initialValue}) : _files = List.from(initialValue);
 
-  List<String> get files => _files;
+  List<File> get files => _files;
 
   /// p: parameter. example value = [[file_index, new_value], [file_index, new_value]]
   void editFileNames(List<List<dynamic>> p) {
-    //* Edit file names.
+    //* Edit the file names.
     notifyListeners();
   }
 }
 
 class RenameFilesPage extends StatelessWidget {
   const RenameFilesPage({super.key, required this.initialValue});
-  final List<String> initialValue;
+  final List<File> initialValue;
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +35,18 @@ class RenameFilesPage extends StatelessWidget {
 class _RenameFilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      body: Consumer<FilesList>(
+        builder: (context, value, child) {
+          return ListView.builder(
+              itemCount: value.files.length,
+              itemBuilder: (context, index) {
+                return ListTile(
+                  title: Text(value.files[index].path),
+                );
+              });
+        },
+      ),
+    );
   }
 }
