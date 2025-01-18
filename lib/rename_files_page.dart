@@ -41,6 +41,8 @@ class RenameFilesPage extends StatelessWidget {
 class _RenameFilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    TextStyle listHeaderTextStyle = TextStyle(fontSize: 16, color: Colors.blue.shade600);
+
     return Scaffold(
       body: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -54,17 +56,30 @@ class _RenameFilePage extends StatelessWidget {
                   style: TextStyle(fontSize: 20),
                 ),
               )),
-          const VerticalDivider(),
+          const VerticalDivider(
+            indent: 16,
+            endIndent: 16,
+          ),
           Consumer<FilesList>(
             builder: (context, value, child) {
               return Expanded(
                 flex: 1,
                 child: ListView.builder(
-                    itemCount: value.files.length,
+                    itemCount: value.files.length + 1,
                     itemBuilder: (context, index) {
-                      return ListTile(
-                        title: Text(value.fileNames[index]),
-                      );
+                      if (index == 0) {
+                        return ListTile(
+                          leading: Text(
+                            "Original Name",
+                            style: listHeaderTextStyle,
+                          ),
+                          trailing: Text("Resulting Name", style: listHeaderTextStyle),
+                        );
+                      } else {
+                        return ListTile(
+                          title: Text(value.fileNames[index - 1]),
+                        );
+                      }
                     }),
               );
             },
