@@ -1,7 +1,6 @@
 // ignore_for_file: use_key_in_widget_constructors
 
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -43,16 +42,34 @@ class _RenameFilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Consumer<FilesList>(
-        builder: (context, value, child) {
-          return ListView.builder(
-              itemCount: value.files.length,
-              itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(value.fileNames[index]),
-                );
-              });
-        },
+      body: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Expanded(
+              flex: 1,
+              child: Padding(
+                padding: EdgeInsets.all(16.0),
+                child: Text(
+                  "Edit Names",
+                  style: TextStyle(fontSize: 20),
+                ),
+              )),
+          const VerticalDivider(),
+          Consumer<FilesList>(
+            builder: (context, value, child) {
+              return Expanded(
+                flex: 1,
+                child: ListView.builder(
+                    itemCount: value.files.length,
+                    itemBuilder: (context, index) {
+                      return ListTile(
+                        title: Text(value.fileNames[index]),
+                      );
+                    }),
+              );
+            },
+          ),
+        ],
       ),
     );
   }
