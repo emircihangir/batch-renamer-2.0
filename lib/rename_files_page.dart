@@ -11,6 +11,13 @@ class FilesList extends ChangeNotifier {
   FilesList({required List<File> initialValue}) : _files = List.from(initialValue);
 
   List<File> get files => _files;
+  List<String> get fileNames {
+    return _files
+        .map(
+          (e) => e.path.split("/").last,
+        )
+        .toList();
+  }
 
   /// p: parameter. example value = [[file_index, new_value], [file_index, new_value]]
   void editFileNames(List<List<dynamic>> p) {
@@ -42,7 +49,7 @@ class _RenameFilePage extends StatelessWidget {
               itemCount: value.files.length,
               itemBuilder: (context, index) {
                 return ListTile(
-                  title: Text(value.files[index].path),
+                  title: Text(value.fileNames[index]),
                 );
               });
         },
