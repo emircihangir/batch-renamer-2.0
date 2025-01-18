@@ -44,6 +44,27 @@ class _RenameFilePage extends StatelessWidget {
     TextStyle listHeaderTextStyle = TextStyle(fontSize: 16, color: Colors.blue.shade600);
 
     return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          icon: const Icon(
+            Icons.arrow_back,
+          ),
+          tooltip: "Back",
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: IconButton(
+              tooltip: "Save",
+              icon: Icon(Icons.save),
+              onPressed: () {},
+            ),
+          )
+        ],
+      ),
       body: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
