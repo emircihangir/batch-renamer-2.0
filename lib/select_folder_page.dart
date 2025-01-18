@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_print
 
 import 'dart:io';
+import 'package:batchrenamerv2/rename_files_page.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -21,7 +22,7 @@ class SelectFolderPage extends StatelessWidget {
 
               if (selectedFiles != null) {
                 List<File> files = selectedFiles.paths.map((path) => File(path!)).toList();
-                print(files);
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => RenameFilesPage(initialValue: files)));
               }
             },
             child: SvgPicture.asset(
