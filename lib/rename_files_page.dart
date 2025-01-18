@@ -41,8 +41,6 @@ class RenameFilesPage extends StatelessWidget {
 class _RenameFilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    TextStyle listHeaderTextStyle = TextStyle(fontSize: 16, color: Colors.blue.shade600);
-
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -68,13 +66,13 @@ class _RenameFilePage extends StatelessWidget {
       body: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Expanded(
+          Expanded(
               flex: 1,
               child: Padding(
-                padding: EdgeInsets.all(16.0),
+                padding: const EdgeInsets.all(16.0),
                 child: Text(
                   "Edit Names",
-                  style: TextStyle(fontSize: 20),
+                  style: Theme.of(context).textTheme.titleMedium,
                 ),
               )),
           const VerticalDivider(
@@ -92,13 +90,19 @@ class _RenameFilePage extends StatelessWidget {
                         return ListTile(
                           leading: Text(
                             "Original Name",
-                            style: listHeaderTextStyle,
+                            style: Theme.of(context).textTheme.titleMedium,
                           ),
-                          trailing: Text("Resulting Name", style: listHeaderTextStyle),
+                          trailing: Text(
+                            "Resulting Name",
+                            style: Theme.of(context).textTheme.titleMedium,
+                          ),
                         );
                       } else {
                         return ListTile(
-                          title: Text(value.fileNames[index - 1]),
+                          title: Text(
+                            value.fileNames[index - 1],
+                            style: Theme.of(context).textTheme.bodyMedium,
+                          ),
                         );
                       }
                     }),
