@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+//* Pages
 import 'select_folder_page.dart';
 
 void main() {
@@ -11,11 +13,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      theme: ThemeData(scaffoldBackgroundColor: Colors.white, appBarTheme: AppBarTheme(backgroundColor: Colors.white, surfaceTintColor: Colors.blue.shade200, iconTheme: IconThemeData(color: Colors.blue))),
+      debugShowCheckedModeBanner: false,
       home: const SelectFolderPage(),
     );
   }
