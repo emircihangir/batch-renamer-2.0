@@ -63,6 +63,13 @@ class MyApp extends StatelessWidget {
                           if (context.mounted) Provider.of<FileListModel>(context, listen: false).files = files;
                         }
                       },
+                    ),
+                    ToolBarIconButton(
+                      label: "Save",
+                      tooltipMessage: "Save",
+                      icon: const MacosIcon(CupertinoIcons.floppy_disk),
+                      showLabel: false,
+                      onPressed: () {},
                     )
                   ],
                 ),
