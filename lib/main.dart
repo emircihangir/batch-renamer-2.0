@@ -46,7 +46,23 @@ class MyApp extends StatelessWidget {
           children: [
             ContentArea(
               builder: (context, scrollController) {
-                return const Text("Rename Files View");
+                return Row(
+                  children: [
+                    ResizablePane(
+                        builder: (context, scrollController) {
+                          return Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              "Edit Names",
+                              style: MacosTheme.of(context).typography.title2,
+                            ),
+                          );
+                        },
+                        minSize: 200,
+                        resizableSide: ResizableSide.right,
+                        startSize: 500),
+                  ],
+                );
               },
             )
           ],
