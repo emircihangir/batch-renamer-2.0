@@ -119,7 +119,7 @@ class MyApp extends StatelessWidget {
                                         );
                                       } else {
                                         return Container(
-                                          decoration: BoxDecoration(color: (index % 2 == 1) ? const Color.fromARGB(15, 255, 255, 255) : Colors.transparent, borderRadius: const BorderRadius.all(Radius.circular(5))),
+                                          decoration: BoxDecoration(color: (index % 2 == 1) ? const Color.fromARGB(15, 235, 235, 234) : const Color.fromARGB(15, 40, 40, 38), borderRadius: const BorderRadius.all(Radius.circular(5))),
                                           child: Row(
                                             crossAxisAlignment: CrossAxisAlignment.center,
                                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
