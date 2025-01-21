@@ -2,9 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:macos_ui/macos_ui.dart';
 
-//* Pages
-import 'select_folder_page.dart';
-
 /// This method initializes macos_window_utils and styles the window.
 Future<void> _configureMacosWindowUtils() async {
   const config = MacosWindowUtilsConfig();
