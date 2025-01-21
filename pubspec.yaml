@@ -36,7 +36,6 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.6
   file_picker: ^8.1.7
-  flutter_svg: ^2.0.17
   provider: ^6.1.2
   macos_ui: ^2.0.9
 
