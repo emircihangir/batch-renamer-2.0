@@ -25,6 +25,8 @@ class MyApp extends StatelessWidget {
       home: MacosWindow(
         child: MacosScaffold(
           toolBar: ToolBar(
+            title: const Text("Batch Renamer"),
+            centerTitle: true,
             actions: [
               ToolBarIconButton(
                 label: "Select Files",
