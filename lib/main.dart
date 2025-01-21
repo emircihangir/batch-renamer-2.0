@@ -1,3 +1,5 @@
+import 'dart:io';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:macos_ui/macos_ui.dart';
@@ -29,14 +31,20 @@ class MyApp extends StatelessWidget {
                 tooltipMessage: "Select Files",
                 icon: const MacosIcon(CupertinoIcons.folder_badge_plus),
                 showLabel: false,
-                onPressed: () {},
+                onPressed: () async {
+                  FilePickerResult? selectedFiles = await FilePicker.platform.pickFiles(allowMultiple: true);
+                  if (selectedFiles != null) {
+                    List<File> files = selectedFiles.paths.map((path) => File(path!)).toList();
+                    //* Files are selected.
+                  }
+                },
               )
             ],
           ),
           children: [
             ContentArea(
               builder: (context, scrollController) {
-                return Text("asd");
+                return const Text("Rename Files View");
               },
             )
           ],
