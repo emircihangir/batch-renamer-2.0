@@ -29,7 +29,7 @@ class FileListModel extends ChangeNotifier {
   List<String> get fileNames {
     return _files
         .map(
-          (e) => e.path.split("/").last,
+          (e) => e.path.replaceAll("${e.parent.path}/", ""),
         )
         .toList();
   }
