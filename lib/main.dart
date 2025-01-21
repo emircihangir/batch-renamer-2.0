@@ -117,27 +117,24 @@ class MyApp extends StatelessWidget {
                                             crossAxisAlignment: CrossAxisAlignment.center,
                                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                             children: [
-                                              Padding(
-                                                padding: const EdgeInsets.all(8.0),
-                                                child: Expanded(
-                                                  flex: 1,
+                                              Expanded(
+                                                child: Padding(
+                                                  padding: const EdgeInsets.all(8.0),
                                                   child: Text(
                                                     overflow: TextOverflow.ellipsis,
-                                                    softWrap: false,
                                                     value.fileNames[index - 1],
                                                     style: MacosTheme.of(context).typography.body,
                                                   ),
                                                 ),
                                               ),
-                                              Padding(
-                                                padding: const EdgeInsets.all(8.0),
-                                                child: Expanded(
-                                                  flex: 1,
+                                              Expanded(
+                                                child: Padding(
+                                                  padding: const EdgeInsets.all(8.0),
                                                   child: Text(
                                                     overflow: TextOverflow.ellipsis,
-                                                    softWrap: false,
                                                     value.fileNames[index - 1],
                                                     style: MacosTheme.of(context).typography.body,
+                                                    textAlign: TextAlign.right,
                                                   ),
                                                 ),
                                               )
