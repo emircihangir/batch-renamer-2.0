@@ -35,6 +35,79 @@ class FileListModel extends ChangeNotifier {
   }
 }
 
+Widget fileListView() {
+  return Expanded(
+    child: Consumer<FileListModel>(
+      builder: (context, value, child) {
+        return Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: ListView.builder(
+            itemCount: value.files.length + 1,
+            itemBuilder: (context, index) {
+              if (index == 0) {
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Original Name",
+                        style: MacosTheme.of(context).typography.title3,
+                      ),
+                      Text(
+                        "Resulting Name",
+                        style: MacosTheme.of(context).typography.title3,
+                      )
+                    ],
+                  ),
+                );
+              } else {
+                return Container(
+                  decoration: BoxDecoration(color: (index % 2 == 1) ? const Color.fromARGB(15, 235, 235, 234) : const Color.fromARGB(15, 40, 40, 38), borderRadius: const BorderRadius.all(Radius.circular(5))),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            overflow: TextOverflow.ellipsis,
+                            value.fileNames[index - 1],
+                            style: MacosTheme.of(context).typography.body,
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            overflow: TextOverflow.ellipsis,
+                            value.fileNames[index - 1],
+                            style: MacosTheme.of(context).typography.body,
+                            textAlign: TextAlign.right,
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                );
+              }
+            },
+          ),
+        );
+      },
+    ),
+  );
+}
+
+Widget editNamesView(context) {
+  return Text(
+    "Edit Names",
+    style: MacosTheme.of(context).typography.title2,
+  );
+}
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -82,79 +155,14 @@ class MyApp extends StatelessWidget {
                               builder: (context, scrollController) {
                                 return Padding(
                                   padding: const EdgeInsets.all(8.0),
-                                  child: Text(
-                                    "Edit Names",
-                                    style: MacosTheme.of(context).typography.title2,
-                                  ),
+                                  child: editNamesView(context),
                                 );
                               },
                               minSize: 200,
                               maxSize: MediaQuery.of(context).size.width * 0.7,
                               resizableSide: ResizableSide.right,
                               startSize: MediaQuery.of(context).size.width * 0.5),
-                          Expanded(
-                            child: Consumer<FileListModel>(
-                              builder: (context, value, child) {
-                                return Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: ListView.builder(
-                                    itemCount: value.files.length + 1,
-                                    itemBuilder: (context, index) {
-                                      if (index == 0) {
-                                        return Padding(
-                                          padding: const EdgeInsets.only(bottom: 8.0),
-                                          child: Row(
-                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Text(
-                                                "Original Name",
-                                                style: MacosTheme.of(context).typography.title3,
-                                              ),
-                                              Text(
-                                                "Resulting Name",
-                                                style: MacosTheme.of(context).typography.title3,
-                                              )
-                                            ],
-                                          ),
-                                        );
-                                      } else {
-                                        return Container(
-                                          decoration: BoxDecoration(color: (index % 2 == 1) ? const Color.fromARGB(15, 235, 235, 234) : const Color.fromARGB(15, 40, 40, 38), borderRadius: const BorderRadius.all(Radius.circular(5))),
-                                          child: Row(
-                                            crossAxisAlignment: CrossAxisAlignment.center,
-                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Expanded(
-                                                child: Padding(
-                                                  padding: const EdgeInsets.all(8.0),
-                                                  child: Text(
-                                                    overflow: TextOverflow.ellipsis,
-                                                    value.fileNames[index - 1],
-                                                    style: MacosTheme.of(context).typography.body,
-                                                  ),
-                                                ),
-                                              ),
-                                              Expanded(
-                                                child: Padding(
-                                                  padding: const EdgeInsets.all(8.0),
-                                                  child: Text(
-                                                    overflow: TextOverflow.ellipsis,
-                                                    value.fileNames[index - 1],
-                                                    style: MacosTheme.of(context).typography.body,
-                                                    textAlign: TextAlign.right,
-                                                  ),
-                                                ),
-                                              )
-                                            ],
-                                          ),
-                                        );
-                                      }
-                                    },
-                                  ),
-                                );
-                              },
-                            ),
-                          )
+                          fileListView()
                         ],
                       );
                     },
